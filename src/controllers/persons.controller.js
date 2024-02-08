@@ -1,7 +1,7 @@
 const PersonsService = require('../services/persons.service');
 const service = new PersonsService();
 
-const create = async ( req, res ) => {
+const createUser = async ( req, res ) => {
     try { 
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
@@ -10,7 +10,7 @@ const create = async ( req, res ) => {
     }
 }
 
-const get = async ( req, res ) => {
+const getUsers = async ( req, res ) => {
     try {
         const response = await service.find();
         res.json(response);
@@ -19,7 +19,7 @@ const get = async ( req, res ) => {
     }
 }
 
-const getById = async ( req, res ) => {
+const getUserById = async ( req, res ) => {
     try {
         const { id } = req.params;
         const response = await service.findOne(id);
@@ -29,7 +29,7 @@ const getById = async ( req, res ) => {
     }
 }
 
-const update = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const body = req.body;
@@ -40,7 +40,7 @@ const update = async (req, res) => {
     }
 }
 
-const _delete = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
         const { id } = req.params; 
         const response = await service.delete(id);
@@ -51,5 +51,9 @@ const _delete = async (req, res) => {
 }
 
 module.exports = {
-    create, get, getById, update, _delete
+    createUser,
+    getUsers,
+    getUserById,
+    updateUser,
+    deleteUser
 };
